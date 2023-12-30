@@ -1,0 +1,11 @@
+﻿
+
+@model BookTypes
+
+<h3 class="text-center">booktype update</h3>
+<form method="post" asp-controller="BookType" asp-action="Edit" asp-area="Managment">
+    <div class="mb-3">
+        <input type="text" class="form-control" asp-for="Name" />
+    </div>
+    <button type="submit" class="btn btn-success">Update</button>
+</form>

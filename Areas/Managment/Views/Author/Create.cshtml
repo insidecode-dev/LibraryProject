@@ -1,0 +1,19 @@
+﻿
+@model Authors
+<h3 class="text-center">author add</h3>
+<div asp-validation-summary="All"> 
+    <!--with the help of this taghelper developer is able to see all validation errors-->
+</div>
+
+<form method="post" asp-controller="Author" asp-action="Create" asp-area="Managment">
+    <div class="mb-3">
+        <input placeholder="first name"  type="text" class="form-control" asp-for="FirstName" />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <input placeholder="last name" type="text" class="form-control" asp-for="LastName"  />
+        <span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <button type="submit" class="btn btn-success">add</button>
+</form>

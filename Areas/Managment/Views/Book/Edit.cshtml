@@ -1,0 +1,29 @@
+﻿
+@model (Books book, List<AuthorDTO> authorDTO, List<BookTypeDTO> bookTypeDTO)
+
+<h3 class="text-center">book update</h3>
+<form method="post" asp-controller="Book" asp-action="Edit" asp-area="Managment">
+    <input asp-for="book.ID" type="hidden" />
+    <div class="mb-3">
+        <input type="text" class="form-control" asp-for="@Model.book.Name" placeholder="book name" required />
+    </div>
+    
+    <div class="mb-3">
+        <input type="text" class="form-control" asp-for="@Model.book.PageCount" placeholder="page count" required />
+    </div>
+    
+    <div class="dropdown mb-3">
+        <select asp-for="book.BookTypesID" class="form-control" asp-items="@(new SelectList(Model.bookTypeDTO, "ID", "Name"))" required>
+            <option value="@Model.book.BookTypes.Name" selected hidden></option>
+        </select>
+    </div>
+    
+    <div class="dropdown mb-3">
+        <select asp-for="book.AuthorsID" class="form-control" asp-items="@(new SelectList(Model.authorDTO@*.Where(x=>x.ID!=Model.book.AuthorsID)*@, "ID", "FullName"))" required>
+            <option value="@Model.authorDTO.Select(x=>x.FullName)" selected hidden>@Model.authorDTO.Select(x=>x.FullName)</option>
+        </select>
+    </div>
+    
+    <button type="submit" class="btn btn-success">update</button>
+    
+</form>

@@ -1,0 +1,31 @@
+﻿
+@model List<BookTypes>
+
+<h3 class="text-center">book types</h3>
+<a asp-controller="BookType" asp-action="Create" asp-area="Managment" class="btn btn-primary" style="float:right">add new</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>         
+            <th>Created Date</th>         
+            <th>Modified Date</th>
+            <th>Operations</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ID</td>
+                <td>@item.Name</td>             
+                <td>@item.CreatedDate.ToString("f")</td>
+                <td>@item.ModifiedDate.ToString("f")</td>
+                <td>
+                    <a asp-area="Managment" asp-controller="BookType" asp-action="Edit" asp-route-id="@item.ID"><i class="bi bi-pencil-fill"></i></a>
+                    <a asp-area="Managment" asp-controller="BookType" asp-action="Delete" asp-route-id="@item.ID"><i class="bi bi-x-circle-fill"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

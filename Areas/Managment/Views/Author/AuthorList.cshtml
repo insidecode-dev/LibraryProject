@@ -1,0 +1,29 @@
+﻿
+@model List<Authors>
+
+<h3 class="text-center">authors</h3>
+<a asp-controller="Author" asp-action="Create" asp-area="Managment" class="btn btn-primary" style="float:right">add new</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Operations</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ID</td>
+                <td>@item.FirstName</td>
+                <td>@item.LastName</td>
+                <td>
+                    <a asp-area="Managment" asp-controller="Author" asp-action="Edit" asp-route-id="@item.ID"><i class="bi bi-pencil-fill"></i></a>
+                    <a asp-area="Managment" asp-controller="Author" asp-action="Delete" asp-route-id="@item.ID"><i class="bi bi-x-circle-fill"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
